@@ -1,0 +1,14 @@
+{
+  "appName": {
+    "message": "miactab",
+    "description": "Описание расширения"
+  },
+  "appShortName": {
+    "message": "miactab",
+    "description": "Краткое Описание расширения (maximum of 12 characters recommended)"
+  },
+  "appDescription": {
+    "message": "new tab ext",
+    "description": "Краткое Описание расширения"
+  }
+}

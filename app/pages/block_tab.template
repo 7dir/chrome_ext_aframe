@@ -1,0 +1,7 @@
+{{!--               <a-entity template="src: block_tab.template; type: handlebars; data: block_tab-data"
+                        data-position="{{ x * 2 }} {{ y * 2 }} 0"></a-entity>
+ --}}
+
+<a-entity position="{{ position }}">
+  <a-plane src="../images/thumb-cubes.jpg" rotation="0 0 0"></a-plane>
+</a-entity>

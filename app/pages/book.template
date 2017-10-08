@@ -1,0 +1,4 @@
+<a-entity position="{{ position }}">
+  <a-plane src="{{ src }}" rotation="0 0 0"></a-plane>
+  <a-text value="{{ title }}" position="-1 1 1"></a-text>
+</a-entity>
