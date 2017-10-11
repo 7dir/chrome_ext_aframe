@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>amiac</title>
+  <link rel="stylesheet" type="text/css" href="../styles/newtab.css">
+  <script src="../scripts/jquery.js" charset="utf-8"></script> -->
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/nunjucks/2.3.0/nunjucks.min.js"></script> -->
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script> -->
+  <script src="../scripts/nunjucks.min.js" charset="utf-8"></script>
+  <script src="../scripts/handlebars.min.js" charset="utf-8"></script>
+  <!-- <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script> -->
+  <script src="../scripts/chrome_books.js"></script>
+  <script src="../scripts/newtab.js"></script>
+
+  <!-- <script src="../scripts/droid_sans_mono_regular.typeface.js"></script> -->
+
+</head>
+<body>
+    <a-scene  fog="type: linear; color: #AAB; far: 30; near: 0"
+              books school-playground>
+
+      <a-assets>
+
+        <script id="block_tab" type="text/x-nunjucks-template">
+          {% for x in range(1, 6) %}
+            {% for y in range(1, 4) %}
+              <a-entity template="src: block_tab.template; type: handlebars; data: block_tab-data"
+                        data-position="{{ x * 2 }} {{ y * 2 }} 0"></a-entity>
+            {% endfor %}
+          {% endfor %}
+        </script>
+
+        <!-- <a-asset-item id="rus" src="../scripts/droid_sans_mono_regular.typeface.js"></a-asset-item> -->
+
+      </a-assets>
+
+      <!-- floor -->
+      <a-plane static-body
+         position="0 -1.5 0"
+         rotation="-90 0 0"
+         height="100" width="100"
+         color="#CCC"
+      ></a-plane>
+
+      <a-text value="Сейчас Now " geometry="primitive:plane"></a-text>
+      <a-entity template="src: cubes.template" position="-4 0 -8"></a-entity>
+
+      <a-entity template="src: book.template; type: handlebars; data: book-data" data-position="2 2 0" data-title="limpid filling station attendant" data-src="https://unsplash.it/300/200/?random=2"></a-entity>
+
+
+      <!-- <a-entity line="start: 0, 1, 0; end: 2 0 -5; color: red" line__2="start: -2, 4, 5; end: 0 4 -3; color: green"></a-entity> -->
+
+      <!-- physics -->
+      <a-box dynamic-body normal-material color="brown" physics="mass: 1.4;" position="4 4 -8" rotation="13 45 45"></a-box>
+
+
+      <a-entity id="lineLayout" layout="type: box; margin: 1.5; columns: 5" position="0 0 -3">
+      </a-entity>
+
+      <!-- bookmarks -->
+      <a-entity rotation="0 90 0">
+        <!-- <a-entity text-geometry="value: Вкладки" position="-1 -1 -1"></a-entity> -->
+        <a-entity text-geometry="value: Вкладки?; font: #rus" position="-1 -1 -1"></a-entity>
+        <a-entity id='bookmarks' template="src: #block_tab" position="-8 -3 -10"></a-entity>
+        <!-- <a-entity id='bookmarks_text' text="text: Вкладки; font: Droid Sans Mono; size: 0.7;" position="-6 -1.3 -10" color="black"></a-entity> -->
+      </a-entity>
+
+      <a-sky color="#AAB"></a-sky>
+      <a-entity camera look-controls wasd-controls="acceleration: 120; fly: false;" mouse-cursor>
+      <a-cursor id="cursor"
+          animation__click="property: scale; startEvents: click; from: 0.1 0.1 0.1; to: 1 1 1; dur: 150"
+          animation__fusing="property: fusing; startEvents: fusing; from: 1 1 1; to: 0.1 0.1 0.1; dur: 1500"
+          event-set__1="_event: mouseenter; color: springgreen"
+          event-set__2="_event: mouseleave; color: black"
+          raycaster="objects: .link"></a-cursor>
+      </a-entity>
+
+    </a-scene>
+  <!-- <script src="../scripts/loaded.js"></script> -->
+</body>
+</html>
